@@ -1,0 +1,20 @@
+{
+    "name": "CifkorTestTask.Domain.Climate",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:edef8d53d22d60544b63346b342713d3",
+        "GUID:46aa7a90846bd06468b4bcefa255a34b",
+        "GUID:c08a5052362ec4a4186aacf13f5e6f01"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

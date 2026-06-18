@@ -1,0 +1,22 @@
+{
+    "name": "CifkorTestTask.Presentation.Navigation",
+    "rootNamespace": "",
+    "references": [
+        "GUID:375a2b2d1d3bd46ba98f8cd67b6afde6",
+        "GUID:2aedb53ceab380c4993b3a6a7806a632",
+        "GUID:46aa7a90846bd06468b4bcefa255a34b",
+        "GUID:c5e5af9a0a2b9ff41aff3b143d9b5cbc",
+        "GUID:3fc9f28b528001846b3aecbef88fa185",
+        "GUID:f8b7d1b193b306f45829b661787885a4",
+        "GUID:456625dbc89f63944891fea33406e5da"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
