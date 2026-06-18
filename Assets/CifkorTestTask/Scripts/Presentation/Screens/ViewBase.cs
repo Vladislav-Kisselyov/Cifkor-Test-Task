@@ -11,7 +11,6 @@ namespace CifkorTestTask.Presentation.Screens
 
         public void Show(bool withAnimation = true)
         {
-            Debug.Log($"{GetType().Name}: Show()");
             _hideAnimationSequencer?.Kill();
 
             gameObject.SetActive(true);
@@ -26,7 +25,6 @@ namespace CifkorTestTask.Presentation.Screens
 
         public void Hide(bool withAnimation = true)
         {
-            Debug.Log($"{GetType().Name}: Hide()");
             if (_hideAnimationSequencer != null && withAnimation)
             {
                 _hideAnimationSequencer.Play(() => gameObject.SetActive(false));

@@ -1,5 +1,7 @@
 using System;
 using CifkorTestTask.Application.Cookie;
+using CifkorTestTask.Infrastructure.Injection;
+using CifkorTestTask.Presentation.Audio;
 using CifkorTestTask.Presentation.Cookie.View;
 using Zenject;
 
@@ -7,36 +9,48 @@ namespace CifkorTestTask.Presentation.Cookie.Presenter
 {
     public class ClickerPresenter : IInitializable, IDisposable
     {
-        private readonly IClickerController _controller;
+        private readonly IInjectionFactory _injectionFactory;
+        private readonly IAudioController _audioController;
+        private readonly IClickerController _clickerController;
         private readonly IClickerView _view;
 
+        private ParticlesPanelPresenter _particlesPanelPresenter;
+
         public ClickerPresenter(
-            IClickerController controller,
+            IInjectionFactory injectionFactory,
+            IAudioController audioController,
+            IClickerController clickerController,
             IClickerView view)
         {
-            _controller = controller;
+            _injectionFactory = injectionFactory;
+            _audioController = audioController;
+            _clickerController = clickerController;
             _view = view;
         }
 
         void IInitializable.Initialize()
         {
-            _controller.OnCurrencyChanged += HandleCurrencyChanged;
-            _controller.OnEnergyChanged += HandleEnergyChanged;
-            _controller.OnTapExecuted += HandleTapExecuted;
-            _controller.OnAutoCollectExecuted += HandleAutoCollectExecuted;
+            _particlesPanelPresenter = _injectionFactory.Create<ParticlesPanelPresenter>();
+
+            _clickerController.OnCurrencyChanged += HandleCurrencyChanged;
+            _clickerController.OnEnergyChanged += HandleEnergyChanged;
+            _clickerController.OnTapExecuted += HandleTapExecuted;
+            _clickerController.OnAutoCollectExecuted += HandleAutoCollectExecuted;
 
             _view.OnButtonClick += HandleViewButtonClick;
-            _view.SetCurrency(_controller.Currency);
-            _view.SetEnergy(_controller.Energy);
+            _view.SetCurrency(_clickerController.Currency);
+            _view.SetEnergy(_clickerController.Energy);
             _view.Show();
         }
 
         void IDisposable.Dispose()
         {
-            _controller.OnCurrencyChanged -= HandleCurrencyChanged;
-            _controller.OnEnergyChanged -= HandleEnergyChanged;
-            _controller.OnTapExecuted -= HandleTapExecuted;
-            _controller.OnAutoCollectExecuted -= HandleAutoCollectExecuted;
+            _particlesPanelPresenter.Dispose();
+
+            _clickerController.OnCurrencyChanged -= HandleCurrencyChanged;
+            _clickerController.OnEnergyChanged -= HandleEnergyChanged;
+            _clickerController.OnTapExecuted -= HandleTapExecuted;
+            _clickerController.OnAutoCollectExecuted -= HandleAutoCollectExecuted;
 
             _view.OnButtonClick -= HandleViewButtonClick;
             _view.Hide();
@@ -44,12 +58,21 @@ namespace CifkorTestTask.Presentation.Cookie.Presenter
 
         private void HandleViewButtonClick()
         {
-            _controller.TryTap();
+            _clickerController.TryTap();
         }
 
-        private void HandleCurrencyChanged(int newCurrencyValue)
+        private void HandleCurrencyChanged(int newCurrencyValue, int deltaValue)
         {
-            _view.SetCurrency(newCurrencyValue);
+            _particlesPanelPresenter.ShowParticle(
+                deltaValue,
+                _view.CurrencySprite,
+                _view.ButtonTransform,
+                _view.CurrencyTransform,
+                () =>
+                {
+                    _view.SetCurrency(newCurrencyValue);
+                    _audioController.Play(AudioClipKeys.CurrencyUpdate);
+                });
         }
 
         private void HandleEnergyChanged(int newEnergyValue)
@@ -59,12 +82,13 @@ namespace CifkorTestTask.Presentation.Cookie.Presenter
 
         private void HandleTapExecuted()
         {
-
+            _view.PlayButtonBounceAnimation();
+            _audioController.Play(AudioClipKeys.SuccessManualTap);
         }
 
         private void HandleAutoCollectExecuted()
         {
-
+            _audioController.Play(AudioClipKeys.SuccessAutoCollect);
         }
     }
 }

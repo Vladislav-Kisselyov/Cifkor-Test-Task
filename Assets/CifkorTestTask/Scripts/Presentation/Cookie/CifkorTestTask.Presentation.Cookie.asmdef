@@ -2,9 +2,14 @@
     "name": "CifkorTestTask.Presentation.Cookie",
     "rootNamespace": "",
     "references": [
+        "GUID:4ffe3249bc841464abc6ec7cdd53b4f4",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:375a2b2d1d3bd46ba98f8cd67b6afde6",
         "GUID:b86c07e9c6ae3c041a9b56c3553f9868",
-        "GUID:c5e5af9a0a2b9ff41aff3b143d9b5cbc"
+        "GUID:c5e5af9a0a2b9ff41aff3b143d9b5cbc",
+        "GUID:0205ee9be28973d4db12691281c647d5",
+        "GUID:46aa7a90846bd06468b4bcefa255a34b",
+        "GUID:055b09448f9d4464987ac06794fd8951"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

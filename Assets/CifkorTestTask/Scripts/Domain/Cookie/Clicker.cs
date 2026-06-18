@@ -10,7 +10,7 @@ namespace CifkorTestTask.Domain.Cookie
         private ClickerData _runtimeData;
 
         public ClickerData RuntimeData => _runtimeData;
-        public event Action<int> OnCurrencyChanged;
+        public event Action<int, int> OnCurrencyChanged;
         public event Action<int> OnEnergyChanged;
         public event Action OnTapExecuted;
         public event Action OnAutoCollectExecuted;
@@ -55,8 +55,10 @@ namespace CifkorTestTask.Domain.Cookie
 
         private void AddCurrency(int amount)
         {
+            var prevCurrency = _runtimeData.Currency;
+
             _runtimeData.Currency += amount;
-            OnCurrencyChanged?.Invoke(_runtimeData.Currency);
+            OnCurrencyChanged?.Invoke(_runtimeData.Currency, _runtimeData.Currency - prevCurrency);
         }
 
         private void SpendEnergy(int amount)
