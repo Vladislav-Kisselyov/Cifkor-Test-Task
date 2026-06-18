@@ -1374,8 +1374,8 @@ MonoBehaviour:
     to: 1
   _textureSheetFPS: 25
   _textureSheetCycles: 1
-  _rate: 30
-  _rateOverLifetime: 0
+  _rate: 0
+  _rateOverLifetime: 30
   _rateOverDistance: 0
   _bursts: []
   _particleTrailRenderer: {fileID: 0}

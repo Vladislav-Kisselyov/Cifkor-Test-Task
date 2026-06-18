@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ClickerConfigSO
   m_EditorClassIdentifier: CifkorTestTask.Application::CifkorTestTask.Application.Configs.ClickerConfigSO
   _config:
-    _currencyPerTap: 1
+    _currencyPerTap: 5
     _currencyPerAutoCollect: 1
     _maxEnergy: 1000
-    _energyCostPerTap: 1
+    _energyCostPerTap: 5
     _energyCostPerAutoCollect: 1
     _energyRegenAmount: 10
     _energyRegenIntervalSeconds: 10

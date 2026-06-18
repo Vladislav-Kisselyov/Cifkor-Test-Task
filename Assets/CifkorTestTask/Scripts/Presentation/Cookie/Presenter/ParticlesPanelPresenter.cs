@@ -58,7 +58,7 @@ namespace CifkorTestTask.Presentation.Cookie.Presenter
             var particle = _poolableFactory.Spawn(_view.ParticlePrefab, _view.ParticleParentTransform);
             particle.SetText(particlesCount);
             particle.transform.position = RandomizePosition(from.position);
-            particle.ParticleImage.rateOverTime = particlesToSpawn;
+            particle.ParticleImage.rateOverLifetime = particlesToSpawn;
             particle.ParticleImage.sprite = particlesSprite;
             particle.ParticleImage.attractorTarget = to;
             particle.ParticleImage.onLastParticleFinished.AddListener(() =>
