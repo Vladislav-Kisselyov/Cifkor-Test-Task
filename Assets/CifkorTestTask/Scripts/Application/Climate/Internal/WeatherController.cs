@@ -87,6 +87,10 @@ namespace CifkorTestTask.Application.Climate.Internal
             {
                 OnWeatherUpdateEnqueue?.Invoke();
                 var data = await _queue.Enqueue(request);
+
+                if (ct.IsCancellationRequested)
+                    return;
+
                 _domain.SetWeatherData(data);
             }
             catch (OperationCanceledException)

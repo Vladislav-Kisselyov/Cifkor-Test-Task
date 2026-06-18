@@ -1,4 +1,21 @@
 {
-	"name": "CifkorTestTask.Application.Pets",
-	"references":[ "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:46aa7a90846bd06468b4bcefa255a34b" ]
+    "name": "CifkorTestTask.Application.Pets",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:46aa7a90846bd06468b4bcefa255a34b",
+        "GUID:edef8d53d22d60544b63346b342713d3",
+        "GUID:1d9a6cb45ec47d248bfde4e9e70f4845",
+        "GUID:89f807d035d7c7f4c92220cdcd93c49f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

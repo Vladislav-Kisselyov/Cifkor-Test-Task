@@ -8,11 +8,11 @@ namespace CifkorTestTask.Domain.Climate
         public event Action<WeatherData> OnWeatherUpdate;
         public event Action<string> OnWeatherError;
 
-        public WeatherData LastData { get; private set; }
+        public WeatherData RuntimeData { get; private set; }
 
         public void SetWeatherData(WeatherData data)
         {
-            LastData = data;
+            RuntimeData = data;
             OnWeatherUpdate?.Invoke(data);
         }
 

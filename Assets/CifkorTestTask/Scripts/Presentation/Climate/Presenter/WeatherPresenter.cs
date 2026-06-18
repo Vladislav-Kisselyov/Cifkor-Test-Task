@@ -76,10 +76,14 @@ namespace CifkorTestTask.Presentation.Climate.Presenter
 
             async UniTaskVoid EnqueueWeatherIconFetchAsync(string labelToSet, CancellationToken ct)
             {
-                var request = _factory.Create<WeatherIconRequest>(_latestIconUrl);
+                var request = _factory.Create<WeatherIconRequest, string>(_latestIconUrl);
                 try
                 {
                     var sprite = await _queue.Enqueue(request);
+
+                    if (ct.IsCancellationRequested)
+                        return;
+
                     _view.SetLoading(false);
                     _view.SetText(labelToSet);
                     _view.SetIcon(sprite);
@@ -88,7 +92,7 @@ namespace CifkorTestTask.Presentation.Climate.Presenter
                 {
                     /* закрылась вкладка или игра */
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     _view.SetLoading(false);
                     _view.ShowError("Не удалось загрузить иконку погоды");
