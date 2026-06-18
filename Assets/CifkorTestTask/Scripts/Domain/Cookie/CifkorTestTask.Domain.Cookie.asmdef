@@ -1,4 +1,4 @@
 {
 	"name": "CifkorTestTask.Domain.Cookie",
-	"references":[ "GUID:46aa7a90846bd06468b4bcefa255a34b", "GUID:0d8beb7f090555447a6cf5ce9e54dbb4" ]
+	"references":[ "GUID:46aa7a90846bd06468b4bcefa255a34b", "GUID:0d8beb7f090555447a6cf5ce9e54dbb4", "GUID:e74d99386f82d0943bacfe12d92ad80c", "GUID:867f080b2558bad45946757170b2852e" ]
 }
